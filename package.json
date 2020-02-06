@@ -1,0 +1,34 @@
+{
+  "name": "tpanel",
+  "version": "1.0.0",
+  "description": "Taner Cetin Admin Panel",
+  "main": "index.php",
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "bootstrap-confirmation2": "^2.4.4",
+    "datatables.net-bs": "^1.10.20",
+    "fastclick": "^1.0.6",
+    "font-awesome": "^4.7.0",
+    "icheck": "^1.0.2",
+    "ionicons": "^4.6.3",
+    "jquery": "^3.4.1",
+    "jquery-slimscroll": "^1.3.8",
+    "jstree": "^3.3.8",
+    "select2": "^4.0.13",
+    "summernote": "^0.8.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/tanercc/tccpanel"
+  },
+  "keywords": [
+    "php",
+    "panel"
+  ],
+  "author": "Taner Cetin",
+  "license": "ISC"
+}

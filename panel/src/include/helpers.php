@@ -1,0 +1,119 @@
+<?php
+
+function lang($langvar = '') {
+    global $langs;
+
+    if (isset($langs[$langvar])) {
+        return $langs[$langvar];
+    } else {
+        return $langvar;
+    }
+}
+
+function set_href($page = null, $func = null, $id = 0, $slug = null)
+{
+    global $request_lang;
+    $basepath = BASEPATH;
+    $link = $basepath . '/' . $request_lang;
+    if ($page) {
+        $link .= '/' . $page;
+        if ($func) {
+            $link .= '/' . $func;
+            if ($id) {
+                $link .= '/' . $id;
+            }
+            if ($slug) {
+                $link .= '/' . $slug;
+            }
+        }
+    }
+    return $link;
+}
+
+function set_href_lang($lang_table = null)
+{
+    global $request_lang;
+    $basepath = BASEPATH;
+    $link = $basepath . '/' . $request_lang;
+    if ($lang_table) {
+        $link .= '/' . $lang_table . '/lang';
+    }
+    return $link;
+}
+
+function is_menu_active($page)
+{
+    global $request_page;
+    if ($page == $request_page) {
+        return 'active';
+    } else {
+        return '';
+    }
+}
+
+// eger sayfa($page) istenen sayfa($request_page) ile başlarsa menü seçilmiştir
+function is_treemenu_active($page)
+{
+    global $request_page;
+    if (strpos($request_page, $page) === 0) {
+        return 'active';
+    } else {
+        return '';
+    }
+}
+
+function jstree_html($datas, $start_id = 0, $selected = 0)
+{
+    $html = "";
+    foreach ($datas as $id => $row) {
+
+        if ($row['upper_id'] == $start_id) {
+            $inner_html = jstree_html($datas, $id, $selected);
+            $jstree_options = ['icon' => 'fa fa-circle-o', 'opened' => true];
+            if ($id == $selected) $jstree_options['selected'] = true;
+            $data_jstree = json_encode($jstree_options);
+            if ($inner_html) {
+                $inner_html = "<ul>{$inner_html}</ul>\r\n";
+                $html .= "<li data-id='$id' data-jstree='{$data_jstree}'>{$row['name']}{$inner_html}</li>\r\n";
+            } else {
+                $html .= "<li data-id='$id' data-jstree='{$data_jstree}'>{$row['name']}</li>\r\n";
+            }
+        }
+    }
+    return $html;
+}
+
+function post_value($key) {
+    if (isset($_POST[$key])) {
+        return trim($_POST[$key]);
+    } else {
+        return false;
+    }
+}
+
+function slugify($text)
+{
+  // replace non letter or digits by -
+  $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+  // transliterate
+  $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+  // remove unwanted characters
+  $text = preg_replace('~[^-\w]+~', '', $text);
+
+  // trim
+  $text = trim($text, '-');
+
+  // remove duplicate -
+  $text = preg_replace('~-+~', '-', $text);
+
+  // lowercase
+  $text = strtolower($text);
+
+  if (empty($text)) {
+    return 'n-a';
+  }
+
+  return $text;
+}

@@ -1,0 +1,14 @@
+/* custom css */
+
+.modal-body {
+    overflow-y: scroll;
+    max-height: 444px;
+}
+
+.file-list h5 {
+    display: inline;
+}
+
+.file-list .dir h5 {
+    font-weight: bold;
+}
