@@ -59,7 +59,7 @@ INSERT INTO `pagecats` (`id`, `name`, `slug`, `image`, `file`, `link`, `upper_id
 /*!40000 ALTER TABLE `pagecat_lang` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pagecat_lang` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.pages: ~7 rows (approximately)
+-- Dumping data for table sablon-fs.pages: ~8 rows (approximately)
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `name`, `slug`, `info`, `content`, `image`, `video`, `file`, `link`, `writer`, `write_at`, `coordinate`, `include`, `type_id`, `cat_id`, `upper_id`, `is_active`, `deleted`, `order`, `column_1`, `column_2`, `column_3`, `column_4`, `column_5`, `column_6`, `column_7`, `column_8`, `column_9`, `created_at`, `updated_at`) VALUES
 	(1, 'Hakkımızda', 'hakkimizda', '', '', 'indir.pdf', '', '70853860-1297422460439891-331430041978142720-n.jpg', '', '', NULL, '', '', NULL, NULL, NULL, 1, 0, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-07-11 19:54:03', '2020-02-07 00:44:20'),
@@ -72,7 +72,7 @@ INSERT INTO `pages` (`id`, `name`, `slug`, `info`, `content`, `image`, `video`, 
 	(10, 'aw3raw3raw3r', 'aw3rawtgasdfg', '', '', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, 1, 0, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-02-01 00:56:32', NULL);
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.pagetags: ~1 rows (approximately)
+-- Dumping data for table sablon-fs.pagetags: ~2 rows (approximately)
 /*!40000 ALTER TABLE `pagetags` DISABLE KEYS */;
 INSERT INTO `pagetags` (`id`, `name`, `slug`, `icon`, `image`, `type_id`, `is_active`, `deleted`, `order`, `created_at`, `updated_at`) VALUES
 	(2, 'Etiketxxx', 'etiket', NULL, NULL, 2, 1, 0, 50, '2019-07-17 00:46:42', '2019-07-29 23:37:21'),
@@ -99,7 +99,7 @@ INSERT INTO `pagetypes` (`id`, `name`, `slug`, `is_active`, `deleted`, `order`, 
 	(2, 'Haber', 'haber', 1, 0, 50, '2019-06-24 21:54:56', NULL);
 /*!40000 ALTER TABLE `pagetypes` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.page_lang: ~2 rows (approximately)
+-- Dumping data for table sablon-fs.page_lang: ~4 rows (approximately)
 /*!40000 ALTER TABLE `page_lang` DISABLE KEYS */;
 INSERT INTO `page_lang` (`id`, `data_id`, `lang_id`, `name`, `slug`, `title`, `article`, `image`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1, 'ert', 'erty', '', '<p>das fasdf adsf dasf asdf asdf&nbsp;</p><p></p><table class="table table-bordered"><tbody><tr><td><br></td><td><p><img src="/panel/uploads/70853860-1297422460439891-331430041978142720-n.jpg" style="width: 50%;"></p></td></tr></tbody></table>', '', '2020-02-01 00:38:14', '2020-02-04 00:14:24'),
@@ -112,7 +112,7 @@ INSERT INTO `page_lang` (`id`, `data_id`, `lang_id`, `name`, `slug`, `title`, `a
 /*!40000 ALTER TABLE `page_pagetags` DISABLE KEYS */;
 /*!40000 ALTER TABLE `page_pagetags` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.productcats: ~0 rows (approximately)
+-- Dumping data for table sablon-fs.productcats: ~1 rows (approximately)
 /*!40000 ALTER TABLE `productcats` DISABLE KEYS */;
 INSERT INTO `productcats` (`id`, `name`, `slug`, `image`, `file`, `link`, `upper_id`, `is_active`, `deleted`, `order`, `created_at`, `updated_at`) VALUES
 	(1, 'asd', 'ASD', '', '', '', NULL, 1, 0, 50, '2020-02-01 02:06:37', NULL);
@@ -126,19 +126,19 @@ INSERT INTO `productcats` (`id`, `name`, `slug`, `image`, `file`, `link`, `upper
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.producttags: ~0 rows (approximately)
+-- Dumping data for table sablon-fs.producttags: ~1 rows (approximately)
 /*!40000 ALTER TABLE `producttags` DISABLE KEYS */;
 INSERT INTO `producttags` (`id`, `name`, `slug`, `icon`, `image`, `type_id`, `is_active`, `deleted`, `order`, `created_at`, `updated_at`) VALUES
 	(1, '34tergfd', 'raesfgdbcn hb', NULL, '', NULL, 1, 0, 50, '2020-02-01 02:09:57', NULL);
 /*!40000 ALTER TABLE `producttags` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.producttagtypes: ~0 rows (approximately)
+-- Dumping data for table sablon-fs.producttagtypes: ~1 rows (approximately)
 /*!40000 ALTER TABLE `producttagtypes` DISABLE KEYS */;
 INSERT INTO `producttagtypes` (`id`, `name`, `is_active`, `deleted`, `order`, `created_at`, `updated_at`) VALUES
 	(1, 'SDFDSF', 1, 0, 50, '2020-02-01 02:06:57', NULL);
 /*!40000 ALTER TABLE `producttagtypes` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.producttag_lang: ~0 rows (approximately)
+-- Dumping data for table sablon-fs.producttag_lang: ~1 rows (approximately)
 /*!40000 ALTER TABLE `producttag_lang` DISABLE KEYS */;
 INSERT INTO `producttag_lang` (`id`, `data_id`, `lang_id`, `name`, `slug`, `title`, `article`, `image`, `created_at`, `updated_at`) VALUES
 	(1, 1, 1, 'dfasdf', 'asdf', '', '', '', '2020-02-01 02:12:15', NULL);
@@ -174,7 +174,7 @@ INSERT INTO `usertypes` (`id`, `name`, `slug`, `is_active`, `deleted`, `order`, 
 	(2, 'User', 'user', 1, 0, 50, '2020-02-01 15:21:26', NULL);
 /*!40000 ALTER TABLE `usertypes` ENABLE KEYS */;
 
--- Dumping data for table sablon-fs.variables: ~0 rows (approximately)
+-- Dumping data for table sablon-fs.variables: ~1 rows (approximately)
 /*!40000 ALTER TABLE `variables` DISABLE KEYS */;
 INSERT INTO `variables` (`id`, `name`, `is_active`, `deleted`, `order`, `created_at`, `updated_at`) VALUES
 	(1, 'headTitle', 1, 0, 50, '2020-02-01 15:04:08', '2020-02-01 15:07:08');
