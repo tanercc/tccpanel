@@ -23,7 +23,7 @@ $permissions = [
     ],
     'admin' => [
         'home',
-        'page',
+        'data',
         'menu',
         'slider',
         'product',
@@ -34,7 +34,7 @@ $permissions = [
     ],
     'user' => [
         'home',
-        'page',
+        'data',
         'menu',
         'slider',
         'product',
@@ -44,12 +44,12 @@ $permissions = [
 
 $granted = false;
 
-function has_user_permission($page_array)
+function has_user_permission($route_array)
 {
     global $permissions;
     $result = false;
-    foreach ($page_array as $page) {
-        if (in_array($page, $permissions[$_SESSION["user_type"]])) {
+    foreach ($route_array as $route) {
+        if (in_array($route, $permissions[$_SESSION["user_type"]])) {
             $result = true;
         }
     }
@@ -57,8 +57,8 @@ function has_user_permission($page_array)
 }
 
 if (isset($permissions['grant'])) {
-    foreach ($permissions["grant"] as $page) {
-        if (strpos($request_page, $page) === 0) {
+    foreach ($permissions["grant"] as $route) {
+        if (strpos($request_route, $route) === 0) {
             $granted = true;
         }
     }
@@ -66,19 +66,19 @@ if (isset($permissions['grant'])) {
 
 if (!$granted) {
     if (isset($permissions[$_SESSION["user_type"]])) {
-        foreach ($permissions[$_SESSION["user_type"]] as $page) {
-            if (strpos($request_page, $page) === 0) {
+        foreach ($permissions[$_SESSION["user_type"]] as $route) {
+            if (strpos($request_route, $route) === 0) {
                 $granted = true;
             }
         }
     } else {
-        $request_page = 'error';
+        $request_route = 'error';
         $request_func = '401'; //Unauthorized!
         return;
     }
 }
 
 if (!$granted) {
-    $request_page = 'error';
+    $request_route = 'error';
     $request_func = '403'; //Forbidden!
 }

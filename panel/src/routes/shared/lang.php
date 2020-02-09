@@ -3,8 +3,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang_name = "";
-if ($request_page) {
-    $lang_name = $request_page . "_lang";
+if ($request_route) {
+    $lang_name = $request_route . "_lang";
     $langfields = sql_fields($lang_name);
 } else {
     return;
@@ -44,7 +44,7 @@ if ($request_id) {
     <div class="tab-content">
         <?php foreach ($langtabs as $i => $langtab) : ?>
             <div class="tab-pane <?= ($i == 0) ? 'active' : '' ?>" id="tab_<?= $i ?>">
-                <form class="langform" role="form" method="POST" action="<?= set_href_lang($request_page) ?>">
+                <form class="langform" role="form" method="POST" action="<?= set_href_lang($request_route) ?>">
                     <input type="hidden" name="data_id" value="<?= $request_id ?>">
                     <input type="hidden" name="lang_id" value="<?= $langtab["id"] ?>">
 

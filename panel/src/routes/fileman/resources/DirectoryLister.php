@@ -60,7 +60,7 @@ class DirectoryLister {
         // Set the theme name
         $this->_themeName = $this->_config['theme_name'];
 
-        $this->_appURL .= $this->_config['request_page'];
+        $this->_appURL .= $this->_config['request_route'];
     }
 
      /**

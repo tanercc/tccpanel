@@ -7,7 +7,7 @@ if (!is_array($request_post)) {
     exit;    
 }
 
-$table_name = $request_page . "s";
+$table_name = $request_route . "s";
 $search = post_value('search');
 $page = post_value('page');
 $disabled_id = post_value('id');

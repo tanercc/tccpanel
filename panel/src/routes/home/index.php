@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$pagecount = db_get_table_count('pages');
+$datacount = db_get_table_count('datas');
 $menucount = db_get_table_count('menus');
 $productcount = db_get_table_count('products');
 $categorycount = db_get_table_count('productcats');
@@ -27,8 +27,8 @@ $categorycount = db_get_table_count('productcats');
             <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text"><?=lang('pages')?></span>
-                <span class="info-box-number"><?=$pagecount?></span>
+                <span class="info-box-text"><?=lang('data')?></span>
+                <span class="info-box-number"><?=$datacount?></span>
             </div>
             <!-- /.info-box-content -->
         </div>

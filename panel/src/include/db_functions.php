@@ -161,10 +161,10 @@ function db_get_table_row($table, $id)
 
 function db_write_log($sql)
 {
-    global $request_method, $request_page, $request_func, $request_ip;
+    global $request_method, $request_route, $request_func, $request_ip;
     $user_id = $_SESSION['user_id'];
     $sqlstring = "INSERT INTO logs SET 
-        `task` = '$request_method $request_page/$request_func',
+        `task` = '$request_method $request_route/$request_func',
         `comment` = '" . mres($sql) . "',
         `task_at` = NOW(),
         `ip_no` = '$request_ip',

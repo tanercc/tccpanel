@@ -13,7 +13,7 @@ foreach ($request_post as $field => $value) {
     if ($value!='') $sqlfields[] = "`$field`='$value'";
 }
 $sqlvalues = implode(',', $sqlfields);
-$table_name = $request_page . "s";
+$table_name = $request_route . "s";
 
 sql_query('BEGIN;');
 if (intval($request_post['id']) > 0) {

@@ -1,6 +1,6 @@
 <?php
 
-global $request_lang, $request_page;
+global $request_lang, $request_route;
 
 return array(
     // Basic settings
@@ -9,8 +9,8 @@ return array(
     'list_folders_first'        => true,
     'list_sort_order'           => 'natcasesort',
     'theme_name'                => 'bootstrap',
-    'date_format'               => 'Y-m-d H:i:s', // See: http://php.net/manual/en/function.date.php
-    'request_page' => $request_lang . '/' . $request_page,
+    'date_format'               => 'd-m-Y H:i', // See: http://php.net/manual/en/function.date.php
+    'request_route'             => $request_lang . '/' . $request_route,
 
     // Hidden files
     'hidden_files' => array(

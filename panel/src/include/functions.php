@@ -48,7 +48,7 @@ function write_exception($exception)
             `referer` = `" . mres($referer)  . "`, 
             `get` = `" . mres(serialize($_GET)) . "`,
             `post` = `" . mres(serialize($_POST)) . "`,
-            `page` = `" . mres(basename($_SERVER['SCRIPT_FILENAME']) . " - " . $exception->getLine()) . "`,
+            `route` = `" . mres(basename($_SERVER['SCRIPT_FILENAME']) . " - " . $exception->getLine()) . "`,
             `request_at` = `$request_datetime`";
         $result = mysqli_query($conn, $sqlstring);
         mysqli_query($conn, "COMMIT");
@@ -82,7 +82,7 @@ function write_error($errno, $errstr, $errfile, $errline)
         `referer` = `" . mres($referer)  . "`, 
         `get` = `" . mres(serialize($_GET)) . "`,
         `post` = `" . mres(serialize($_POST)) . "`,
-        `page` = `" . mres(basename($_SERVER['SCRIPT_FILENAME']) . " - " . $errline) . "`,
+        `route` = `" . mres(basename($_SERVER['SCRIPT_FILENAME']) . " - " . $errline) . "`,
         `request_at` = `$request_datetime`";
     $result = mysqli_query($conn, $sqlstring);
     mysqli_query($conn, "COMMIT");

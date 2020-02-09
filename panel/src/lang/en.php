@@ -1,6 +1,6 @@
 <?php
 
 $langs = [
-    'page' => 'Page',
-    'pages' => 'Pages',
+    'data' => 'Data',
+    'datas' => 'Datas',
 ];

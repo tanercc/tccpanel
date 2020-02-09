@@ -10,13 +10,13 @@ function lang($langvar = '') {
     }
 }
 
-function set_href($page = null, $func = null, $id = 0, $slug = null)
+function set_href($route = null, $func = null, $id = 0, $slug = null)
 {
     global $request_lang;
     $basepath = BASEPATH;
     $link = $basepath . '/' . $request_lang;
-    if ($page) {
-        $link .= '/' . $page;
+    if ($route) {
+        $link .= '/' . $route;
         if ($func) {
             $link .= '/' . $func;
             if ($id) {
@@ -41,21 +41,21 @@ function set_href_lang($lang_table = null)
     return $link;
 }
 
-function is_menu_active($page)
+function is_menu_active($route)
 {
-    global $request_page;
-    if ($page == $request_page) {
+    global $request_route;
+    if ($route == $request_route) {
         return 'active';
     } else {
         return '';
     }
 }
 
-// eger sayfa($page) istenen sayfa($request_page) ile başlarsa menü seçilmiştir
-function is_treemenu_active($page)
+// eger sayfa($route) istenen sayfa($request_route) ile başlarsa menü seçilmiştir
+function is_treemenu_active($route)
 {
-    global $request_page;
-    if (strpos($request_page, $page) === 0) {
+    global $request_route;
+    if (strpos($request_route, $route) === 0) {
         return 'active';
     } else {
         return '';

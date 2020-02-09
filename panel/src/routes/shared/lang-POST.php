@@ -3,8 +3,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang_name = "";
-if ($request_page) {
-    $lang_name = $request_page . "_lang";
+if ($request_route) {
+    $lang_name = $request_route . "_lang";
 } else {
     echo json_encode(['result' => false]);
     return;

@@ -9,7 +9,7 @@ if (is_array($request_post) && isset($request_post['id']) && (intval($request_po
     exit;
 }
 
-$table_name = $request_page . "s";
+$table_name = $request_route . "s";
 
 sql_query('BEGIN;');
 

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$table_name = $request_page . "s";
+$table_name = $request_route . "s";
 
 if (!isset($foreignrows)) {
     $foreignrows = [];
@@ -18,8 +18,8 @@ if ($request_id) {
     if (in_array('upper_id', $foreignrows)) $sqlstring .= ", `t_upper`.`name` AS `upper_name` ";
     if (in_array('lang_id', $foreignrows)) $sqlstring .= ", `langs`.`name` AS `lang_name` ";
     $sqlstring .= "FROM `$table_name` ";
-    if (in_array('type_id', $foreignrows)) $sqlstring .= "LEFT JOIN `{$request_page}types` AS `t_types` ON `t_types`.`id` = `$table_name`.`type_id` ";
-    if (in_array('cat_id', $foreignrows)) $sqlstring .= "LEFT JOIN `{$request_page}cats` AS `t_cats` ON `t_cats`.`id` =`$table_name`.`cat_id` ";
+    if (in_array('type_id', $foreignrows)) $sqlstring .= "LEFT JOIN `{$request_route}types` AS `t_types` ON `t_types`.`id` = `$table_name`.`type_id` ";
+    if (in_array('cat_id', $foreignrows)) $sqlstring .= "LEFT JOIN `{$request_route}cats` AS `t_cats` ON `t_cats`.`id` =`$table_name`.`cat_id` ";
     if (in_array('upper_id', $foreignrows)) $sqlstring .= "LEFT JOIN `$table_name` AS `t_upper` ON `t_upper`.`id` = `$table_name`.`upper_id` ";
     if (in_array('lang_id', $foreignrows)) $sqlstring .= "LEFT JOIN `langs` ON `langs`.`id` =`$table_name`.`lang_id` ";
     $sqlstring .= "WHERE `$table_name`.`is_active`=$global_is_active  AND `$table_name`.`deleted`=$global_deleted AND `$table_name`.`id`=$request_id";
@@ -68,7 +68,7 @@ if (isset($request_get['selected']) && $editdata['upper_id'] < 1) {
                     if (!empty($editdata)) : ?>
                         <button type="submit" class="btn btn-primary"><?= lang('submit') ?></button>
                     <?php else : ?>
-                        <a class="btn btn-primary" href="<?= set_href($request_page) ?>"><?= lang('back') ?></a>
+                        <a class="btn btn-primary" href="<?= set_href($request_route) ?>"><?= lang('back') ?></a>
                     <?php endif ?>
                 </div>
             </form>

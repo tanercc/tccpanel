@@ -10,15 +10,15 @@ if (!isset($tablerows)) {
     ];
 }
 
-$table_name = $request_page . "s";
+$table_name = $request_route . "s";
 
 $sqlstring = "SELECT `$table_name`.* ";
 if (isset($tablerows["type_name"])) $sqlstring .= ", `t_types`.`name` AS `type_name`";
 if (isset($tablerows["cat_name"])) $sqlstring .= ", `t_cats`.`name` AS `cat_name`";
 if (isset($tablerows["upper_name"])) $sqlstring .= ", `t_upper`.`name` AS `upper_name`";
 $sqlstring .= "FROM `$table_name` ";
-if (isset($tablerows["type_name"])) $sqlstring .= "LEFT JOIN `{$request_page}types` AS `t_types` ON `t_types`.`id` = `$table_name`.`type_id` ";
-if (isset($tablerows["cat_name"])) $sqlstring .= "LEFT JOIN `{$request_page}cats` AS `t_cats` ON `t_cats`.`id` =`$table_name`.`cat_id` ";
+if (isset($tablerows["type_name"])) $sqlstring .= "LEFT JOIN `{$request_route}types` AS `t_types` ON `t_types`.`id` = `$table_name`.`type_id` ";
+if (isset($tablerows["cat_name"])) $sqlstring .= "LEFT JOIN `{$request_route}cats` AS `t_cats` ON `t_cats`.`id` =`$table_name`.`cat_id` ";
 if (isset($tablerows["upper_name"])) $sqlstring .= "LEFT JOIN `$table_name` AS `t_upper` ON `t_upper`.`id` = `$table_name`.`upper_id` ";
 $sqlstring .= "WHERE `$table_name`.`is_active`=$global_is_active  AND `$table_name`.`deleted`=$global_deleted  ORDER BY `order` ASC";
 $sqlresult = sql_query($sqlstring);
@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_assoc($sqlresult)) {
                             <?php foreach ($tablerows as $key => $value) : ?>
                                 <th><?= $value ?></th>
                             <?php endforeach ?>
-                            <th><a href="<?= set_href($request_page, 'edit', 0) ?>" class="btn btn-xs btn-success"><i class="fa fa-fw fa-plus"></i> <?= lang('insert') ?></a></th>
+                            <th><a href="<?= set_href($request_route, 'edit', 0) ?>" class="btn btn-xs btn-success"><i class="fa fa-fw fa-plus"></i> <?= lang('insert') ?></a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +64,7 @@ while ($row = mysqli_fetch_assoc($sqlresult)) {
                                     <td><?= $rowdata[$key] ?></td>
                                 <?php endforeach ?>
                                 <td>
-                                    <a href="<?= set_href($request_page, 'edit', $id) ?>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-edit"></i> <?= lang('edit') ?></a>
+                                    <a href="<?= set_href($request_route, 'edit', $id) ?>" class="btn btn-xs btn-primary"><i class="fa fa-fw fa-edit"></i> <?= lang('edit') ?></a>
                                     <button id="conf-<?= $id ?>" type="button" class="btn btn-xs btn-danger" data-toggle="confirmation" data-id="<?= $id ?>">
                                         <i class="fa fa-fw fa-trash"></i> <?= lang('delete') ?>
                                     </button>
@@ -82,7 +82,7 @@ while ($row = mysqli_fetch_assoc($sqlresult)) {
 
 <?php
 
-$delete_link = set_href($request_page, 'delete');
+$delete_link = set_href($request_route, 'delete');
 $delete_title = lang('delete-message');
 $delete_yes = lang('yes');
 $delete_no = lang('no');

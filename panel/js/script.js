@@ -1,33 +1,50 @@
 /* Custom Javascript */ 
 
+$(document).ajaxSend(function(event, request, settings) {
+    request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+});
+
+$("a.sidebar-toggle").on("click", function() {
+    var sc = (localStorage.getItem('sidebar-collapse') == 'true') ? 'false' : 'true';
+    localStorage.setItem('sidebar-collapse', sc);
+    console.log(localStorage.getItem('sidebar-collapse'))
+});
+
+if (localStorage.getItem('sidebar-collapse') == 'true') {
+    $("body").addClass("sidebar-collapse");
+}
+
+var modal_target_elem = null;
+
 function bs_input_file() {
-	$(".input-file").before(
-		function() {
-			if ( ! $(this).prev().hasClass('input-ghost') ) {
-				var element = $("<input type='text' class='input-ghost' style='visibility:hidden; height:0'>");
-				element.attr("name",$(this).attr("name"));
-				element.change(function(){
-					element.next(element).find('input').val((element.val()).split('\\').pop());
-				});
-				$(this).find("button.btn-choose").click(function(){
-                    //element.click();
-                    console.log(element);
-                    loadFileModal(element);
-				});
-				$(this).find("button.btn-reset").click(function(){
-					element.val(null);
-					$(this).parents(".input-file").find('input').val('');
-				});
-				$(this).find('input').css("cursor","pointer");
-				$(this).find('input').mousedown(function() {
-					$(this).parents('.input-file').prev().click();
-					return false;
-				});
-				return element;
-			}
-		}
-	);
+	$(".input-file").each(function(){
+        var element = this;
+        $(element).find("button.btn-choose").click(function(){
+            modal_target_elem = $(element).find('input')[0];
+            loadFileModal(element);
+        });
+        $(element).find("button.btn-reset").click(function(){
+            $(element).find('input').val('');
+        });
+        $(element).find("button.btn-view").click(function(){
+            //$(element).find('input').val('');
+        });
+        $(element).find('input').css("cursor","pointer");
+        $(element).find('input').mousedown(function() {
+            $(element).find("button.btn-choose").click();
+            return false;
+        });
+    });
 }
 $(function() {
 	bs_input_file();
 });
+function modalSelect(filename) {
+    $(modal_target_elem).val(filename);
+    $("#modal-panel").modal('hide');
+}
+
+function selectFile(filename) {
+    $(modal_target_elem).val(filename);
+}
+
