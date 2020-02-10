@@ -2,7 +2,7 @@
 
 #DB Settings and Functions
 
-require_once 'db_functions.php';
+require_once(dirname(__FILE__) . '/db_functions.php');
 
 function get_server_link()
 {
