@@ -69,7 +69,7 @@ function sql_fetch_fields($result)
     $result_array = array();
 
     $finfo = mysqli_fetch_fields($result);
-    foreach ($finfo as $val) {      
+    foreach ($finfo as $val) {
         if (!in_array($val->name, $exclude_fields)) {
             $result_array[] = $val->name;
         }
@@ -118,10 +118,9 @@ function db_get_table($table, $is_active = 1, $deleted = 0)
     return $resultarr;
 }
 
-function db_get_table_data($table, $fields)
+function db_get_table_data($table, $fields, $is_active = 1, $deleted = 0)
 {
-    global $global_is_active;
-    global $global_deleted;
+    $table = rtrim($table, 's') . 's';
 
     $sqlstring = "SELECT ";
     if ($fields && is_array($fields)) {
@@ -129,7 +128,7 @@ function db_get_table_data($table, $fields)
     } else {
         $sqlstring .= "*";
     }
-    $sqlstring .= " FROM `$table` WHERE `is_active`=$global_is_active AND `deleted`=$global_deleted ORDER BY `order` ASC;";
+    $sqlstring .= " FROM `$table` WHERE `is_active`=$is_active AND `deleted`=$deleted ORDER BY `order` ASC;";
     $sqlresult = sql_query($sqlstring);
     $resultarr = array();
     while ($row = mysqli_fetch_assoc($sqlresult)) {
@@ -139,14 +138,51 @@ function db_get_table_data($table, $fields)
     return $resultarr;
 }
 
-function db_get_table_with_lang($table, $lang = 'tr', $is_active = 1, $deleted = 0)
+function db_get_table_with_lang($table, $lang_id = 1, $is_active = 1, $deleted = 0)
 {
-    $sqlstring = "SELECT * FROM `$table` WHERE `is_active`=$is_active AND `deleted`=$deleted ORDER BY `order` ASC;";
+    $lang_table = rtrim($table, 's') . '_lang';
+    $table = rtrim($table, 's') . 's';
+
+    $result = sql_query("SHOW COLUMNS FROM `$lang_table` LIKE 'name'");
+    $name = (mysqli_num_rows($result)) ? TRUE : FALSE;
+    $result = sql_query("SHOW COLUMNS FROM `$lang_table` LIKE 'image'");
+    $image = (mysqli_num_rows($result)) ? TRUE : FALSE;
+    $result = sql_query("SHOW COLUMNS FROM `$lang_table` LIKE 'title'");
+    $title = (mysqli_num_rows($result)) ? TRUE : FALSE;
+
+    $sqlstring = "SELECT `$table`.*";
+    $name && $sqlstring .= ", COALESCE(`tl`.`name`, `$table`.`name`) AS `name`";
+    $image && $sqlstring .= ", COALESCE(`tl`.`image`, `$table`.`image`) AS `image`";
+    $title && $sqlstring .= ", `tl`.`title`";
+    $sqlstring .= "FROM `$table`
+        LEFT JOIN `$lang_table` AS `tl` ON `tl`.`data_id`=`$table`.`id`
+        WHERE `$table`.`is_active`=$is_active 
+        AND `$table`.`deleted`=$deleted 
+        AND `tl`.`lang_id`=$lang_id
+        ORDER BY `$table`.`order` ASC;";
     $sqlresult = sql_query($sqlstring);
     $resultarr = array();
     while ($row = mysqli_fetch_assoc($sqlresult)) {
         $idx = $row['id'];
         $resultarr[$idx] = $row;
+    }
+    return $resultarr;
+}
+
+function db_get_variables($lang_id = 1, $is_active = 1, $deleted = 0)
+{
+    $table = 'variables';
+    $lang_table = 'variable_lang';
+
+    $sqlstring = "SELECT `$table`.`name`, `tl`.`name` AS `lang`
+        FROM `$table`
+        LEFT JOIN `$lang_table` AS `tl` ON `tl`.`data_id`=`$table`.`id`
+        WHERE `$table`.`is_active`=$is_active AND `$table`.`deleted`=$deleted AND `tl`.`lang_id`=$lang_id";
+    $sqlresult = sql_query($sqlstring);
+    $resultarr = array();
+    while ($row = mysqli_fetch_assoc($sqlresult)) {
+        $idx = $row['name'];
+        $resultarr[$idx] = $row['lang'];
     }
     return $resultarr;
 }
@@ -157,6 +193,19 @@ function db_get_table_row($table, $id)
     $sqlresult = sql_query($sqlstring);
     $resultarr = mysqli_fetch_assoc($sqlresult);
     return $resultarr;
+}
+
+
+function db_get_current_lang_id($slug)
+{
+    $sqlstring = "SELECT `id` FROM `langs` WHERE `langs`.`is_active`=1 AND `langs`.`deleted`=0 AND `slug`='$slug'";
+    $sqlresult = sql_query($sqlstring);
+    $resultarr = mysqli_fetch_assoc($sqlresult);
+    if ($resultarr) {
+        return $resultarr["id"];
+    } else {
+        return 1;
+    }
 }
 
 function db_write_log($sql)

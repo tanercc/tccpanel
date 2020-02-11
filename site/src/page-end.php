@@ -81,16 +81,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<?= BASEPATH ?>js/jquery-2.1.1.min.js"></script>
+<script src="<?= BASEPATH ?>/js/jquery-2.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="<?= BASEPATH ?>js/bootstrap.min.js"></script>
-<script src="<?= BASEPATH ?>js/wow.min.js"></script>
-<script src="<?= BASEPATH ?>js/fancybox/jquery.fancybox.pack.js"></script>
-<script src="<?= BASEPATH ?>js/jquery.easing.1.3.js"></script>
-<script src="<?= BASEPATH ?>js/jquery.bxslider.min.js"></script>
-<script src="<?= BASEPATH ?>js/jquery.prettyPhoto.js"></script>
-<script src="<?= BASEPATH ?>js/jquery.isotope.min.js"></script>
-<script src="<?= BASEPATH ?>js/functions.js"></script>
+<script src="<?= BASEPATH ?>/js/bootstrap.min.js"></script>
+<script src="<?= BASEPATH ?>/js/wow.min.js"></script>
+<script src="<?= BASEPATH ?>/js/fancybox/jquery.fancybox.pack.js"></script>
+<script src="<?= BASEPATH ?>/js/jquery.easing.1.3.js"></script>
+<script src="<?= BASEPATH ?>/js/jquery.bxslider.min.js"></script>
+<script src="<?= BASEPATH ?>/js/jquery.prettyPhoto.js"></script>
+<script src="<?= BASEPATH ?>/js/jquery.isotope.min.js"></script>
+<script src="<?= BASEPATH ?>/js/functions.js"></script>
 <script>
     wow = new WOW({}).init();
 </script>

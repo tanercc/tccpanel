@@ -13,7 +13,7 @@ session_start();
 // sessions variables
 //===================================
 if (!isset($_SESSION['language'])) {
-    $_SESSION['language'] = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    $_SESSION['language'] = substr(Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']),0,2);
 }
 if (!isset($_SESSION['is_active'])) {
     $_SESSION['is_active'] = 1;
@@ -21,8 +21,6 @@ if (!isset($_SESSION['is_active'])) {
 if (!isset($_SESSION['deleted'])) {
     $_SESSION['deleted'] = 0;
 }
-$global_is_active = $_SESSION['is_active'];
-$global_deleted = $_SESSION['deleted'];
 
 //===================================
 // helpers & functions
@@ -106,8 +104,8 @@ $conn = sql_connect();
 if ($_SESSION['language'] != $request_lang) {
     $_SESSION['language'] = $request_lang;
 }
-if (file_exists(dirname(__FILE__) . "/variables.php")) {
-    require_once(dirname(__FILE__) . "/variables.php");
+if (file_exists(dirname(__FILE__) . "/functions.php")) {
+    require_once(dirname(__FILE__) . "/functions.php");
 }
 
 //===================================

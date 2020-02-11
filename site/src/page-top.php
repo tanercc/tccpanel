@@ -15,13 +15,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= BASEPATH ?>/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>css/font-awesome.min.css" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>css/jquery.bxslider.css" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>css/isotope.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>css/animate.css" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>css/prettyPhoto.css" />
-    <link rel="stylesheet" href="<?= BASEPATH ?>css/style.css" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/css/jquery.bxslider.css" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/css/isotope.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/css/animate.css" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/css/prettyPhoto.css" />
+    <link rel="stylesheet" href="<?= BASEPATH ?>/css/style.css" />
     <?php
 
     if (file_exists(dirname(__FILE__) . "/routes/$request_route/css.php")) {
@@ -29,12 +29,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     }
 
     ?>
-    <!-- =======================================================
-    Theme Name: Multi
-    Theme URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+
 </head>
 
 <body>
@@ -52,7 +47,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </button>
                     <div class="navbar-brand">
                         <a href="index.html">
-                            <h1><span>M</span>ulti</h1>
+                            <h1><?=$vars["siteName"]?></h1>
                         </a>
                     </div>
                 </div>
