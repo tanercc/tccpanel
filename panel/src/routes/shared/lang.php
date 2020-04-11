@@ -82,8 +82,18 @@ if ($request_id) {
                     <?php if (in_array('image', $langfields)) : ?>
                         <div class="form-group">
                             <label for="image"><?= lang('image') ?></label>
-                            <input type="text" class="form-control image" name="image" value="<?= $langdatas[$langtab["id"]]['image'] ?>">
+                            <div class="input-group input-file">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-reset" type="button"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-default btn-view" type="button"><i class="fa fa-image"></i></button>
+                                </span>
+                                <input type="text" class="form-control" id="image" name="image" placeholder='<?= lang('resimsec') ?>' value="<?= $langdatas[$langtab["id"]]['image'] ?>" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-choose" type="button"><?= lang('sec') ?></button>
+                                </span>
+                            </div>
                         </div>
+                        <!-- /.form-group -->
                     <?php endif ?>
 
                     <button type="submit" class="btn btn-primary"><i class="fa fa-spinner fa-pulse fa-fw" style="display:none"></i><?= lang('submit') ?></button>
@@ -119,5 +129,12 @@ $(".langform").submit(function(e){
         $('.fa.fa-spinner').hide();
     });
 });
+EOT;
+$imagefiles_link = set_href('files', 'list', $request_id, $request_route);
+$lang_script .= <<<EOT
+function loadFileModal() {
+    $("#modal-panel .modal-body").load("$imagefiles_link");
+    $("#modal-panel").modal();
+}
 EOT;
 ?>

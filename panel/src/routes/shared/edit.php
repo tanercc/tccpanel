@@ -7,9 +7,6 @@ $table_name = $request_route . "s";
 if (!isset($foreignrows)) {
     $foreignrows = [];
 }
-if (!isset($lang_present)) {
-    $lang_present = false;
-}
 
 if ($request_id) {
     $sqlstring = "SELECT `$table_name`.* ";
@@ -35,6 +32,8 @@ if (isset($request_get['selected']) && $editdata['upper_id'] < 1) {
     $editdata['upper_id'] = $upperdata['id'];
     $editdata['upper_name'] = $upperdata['name'];
 }
+
+$lang_present = db_lang_exist($table_name);
 
 ?>
 

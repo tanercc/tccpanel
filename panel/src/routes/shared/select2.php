@@ -10,7 +10,8 @@ if (!is_array($request_post)) {
 $table_name = $request_route . "s";
 $search = post_value('search');
 $page = post_value('page');
-$disabled_id = post_value('id');
+$id = post_value('id');
+$disabled_id = post_value('disabled');
 
 $sqlstring = "SELECT * FROM `$table_name` 
     WHERE `is_active`=$global_is_active 

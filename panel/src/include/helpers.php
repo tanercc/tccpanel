@@ -10,7 +10,7 @@ function lang($langvar = '') {
     }
 }
 
-function set_href($route = null, $func = null, $id = 0, $slug = null)
+function set_href($route = null, $func = null, $idslug = 0, $data = null)
 {
     global $request_lang;
     $basepath = BASEPATH;
@@ -19,11 +19,11 @@ function set_href($route = null, $func = null, $id = 0, $slug = null)
         $link .= '/' . $route;
         if ($func) {
             $link .= '/' . $func;
-            if ($id) {
-                $link .= '/' . $id;
-            }
-            if ($slug) {
-                $link .= '/' . $slug;
+            if ($idslug) {
+                $link .= '/' . $idslug;
+                if ($data) {
+                    $link .= '/' . $data;
+                }
             }
         }
     }
@@ -32,11 +32,11 @@ function set_href($route = null, $func = null, $id = 0, $slug = null)
 
 function set_href_lang($lang_table = null)
 {
-    global $request_lang;
+    global $request_lang, $request_id;
     $basepath = BASEPATH;
     $link = $basepath . '/' . $request_lang;
     if ($lang_table) {
-        $link .= '/' . $lang_table . '/lang';
+        $link .= "/$lang_table/lang";
     }
     return $link;
 }

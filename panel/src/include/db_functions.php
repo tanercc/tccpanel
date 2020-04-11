@@ -89,6 +89,12 @@ function mres($str)
     return mysqli_real_escape_string($conn, $str);
 }
 
+function db_lang_exist($table) {
+    $lang_table = rtrim($table, 's') . '_lang';
+    $result = sql_query("SHOW TABLES LIKE '$lang_table'");
+    return (mysqli_num_rows($result)) ? TRUE : FALSE;
+}
+
 function db_get_columns_array($table)
 {
     $sqlstring = "SHOW COLUMNS FROM `$table`";
@@ -155,10 +161,9 @@ function db_get_table_with_lang($table, $lang_id = 1, $is_active = 1, $deleted =
     $image && $sqlstring .= ", COALESCE(`tl`.`image`, `$table`.`image`) AS `image`";
     $title && $sqlstring .= ", `tl`.`title`";
     $sqlstring .= "FROM `$table`
-        LEFT JOIN `$lang_table` AS `tl` ON `tl`.`data_id`=`$table`.`id`
+        LEFT JOIN `$lang_table` AS `tl` ON `tl`.`data_id`=`$table`.`id` AND `tl`.`lang_id`=$lang_id
         WHERE `$table`.`is_active`=$is_active 
         AND `$table`.`deleted`=$deleted 
-        AND `tl`.`lang_id`=$lang_id
         ORDER BY `$table`.`order` ASC;";
     $sqlresult = sql_query($sqlstring);
     $resultarr = array();

@@ -124,7 +124,8 @@ if (!isset($editdata)) return;
                 <button class="btn btn-default btn-reset" type="button"><i class="fa fa-times"></i></button>
                 <button class="btn btn-default btn-view" type="button"><i class="fa fa-image"></i></button>
             </span>
-            <input type="text" class="form-control" id="image" name="image" placeholder='<?= lang('resimsec') ?>' value="<?= $editdata['image'] ?>" />
+            <input type="hidden" name="image" value="<?= $editdata['image'] ?>">
+            <input type="text" class="form-control" id="image" placeholder='<?= lang('resimsec') ?>' value="<?= basename($editdata['image']) ?>" />
             <span class="input-group-btn">
                 <button class="btn btn-default btn-choose" type="button"><?= lang('sec') ?></button>
             </span>
@@ -141,7 +142,8 @@ if (!isset($editdata)) return;
                 <button class="btn btn-default btn-reset" type="button"><i class="fa fa-times"></i></button>
                 <button class="btn btn-default btn-view" type="button"><i class="fa fa-file"></i></button>
             </span>
-            <input type="text" class="form-control" id="file" name="file" placeholder='<?= lang('dosyasec') ?>' value="<?= $editdata['file'] ?>" />
+            <input type="hidden" name="file" value="<?= $editdata['file'] ?>">
+            <input type="text" class="form-control" id="file" placeholder='<?= lang('dosyasec') ?>' value="<?= basename($editdata['file']) ?>" />
             <span class="input-group-btn">
                 <button class="btn btn-default btn-choose" type="button"><?= lang('sec') ?></button>
             </span>
@@ -204,7 +206,8 @@ $('%s').select2({
             return {
                 search: params.term,
                 page: params.page,
-                id: {$editdata['id']}
+                id: {$editdata['id']},
+                disabled: %s
             };
         },
         processResults: function (data, params) {
@@ -227,8 +230,8 @@ function loadFileModal() {
 }
 EOT;
 
-if (array_key_exists('type_name', $editdata)) $input_script .= sprintf($select2_script, '#type_id', set_href($request_route . 'type', 'select2'));
-if (array_key_exists('cat_name', $editdata)) $input_script .= sprintf($select2_script, '#cat_id', set_href($request_route . 'cat', 'select2'));
-if (array_key_exists('upper_name', $editdata)) $input_script .= sprintf($select2_script, '#upper_id', set_href($request_route, 'select2'));
+if (array_key_exists('type_name', $editdata)) $input_script .= sprintf($select2_script, '#type_id', set_href($request_route . 'type', 'select2'), 0);
+if (array_key_exists('cat_name', $editdata)) $input_script .= sprintf($select2_script, '#cat_id', set_href($request_route . 'cat', 'select2'), 0);
+if (array_key_exists('upper_name', $editdata)) $input_script .= sprintf($select2_script, '#upper_id', set_href($request_route, 'select2'), $editdata['id']);
 
 ?>

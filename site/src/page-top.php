@@ -55,11 +55,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="navbar-collapse collapse">
                     <div class="menu">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation"><a href="index.html" class="active">Home</a></li>
-                            <li role="presentation"><a href="services.html">Services</a></li>
-                            <li role="presentation"><a href="blog.html">Blog</a></li>
-                            <li role="presentation"><a href="portfolio.html">Portfolio</a></li>
-                            <li role="presentation"><a href="contact.html">Contact</a></li>
+                        <?php
+                            include("main-menu.php")
+                        ?>
                         </ul>
                     </div>
                 </div>
@@ -67,20 +65,3 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </nav>
 </header>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                <?= lang($request_route) ?>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i><?= lang('dashboard') ?></a></li>
-                <li><a href="#"><?= lang($request_route . 's') ?></a></li>
-                <li class="active"><?= lang($request_func) ?></li>
-            </ol>
-        </section>
-
-        <!-- Main content -->
-        <section class="content container-fluid">

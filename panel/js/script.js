@@ -20,7 +20,7 @@ function bs_input_file() {
 	$(".input-file").each(function(){
         var element = this;
         $(element).find("button.btn-choose").click(function(){
-            modal_target_elem = $(element).find('input')[0];
+            modal_target_elem = element;
             loadFileModal(element);
         });
         $(element).find("button.btn-reset").click(function(){
@@ -40,7 +40,8 @@ $(function() {
 	bs_input_file();
 });
 function modalSelect(filename) {
-    $(modal_target_elem).val(filename);
+    $(modal_target_elem).find('input')[0].val(filename);
+    $(modal_target_elem).find('input')[1].val(filename.split('/').reverse()[0]);
     $("#modal-panel").modal('hide');
 }
 

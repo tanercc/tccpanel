@@ -7,6 +7,7 @@ $ignore_file_list = array(".", "..", ".htaccess", "Thumbs.db", ".DS_Store", "ind
 $ignore_ext_list = array("php", "html", "htm", "js", "css");
 
 $dirname = getcwd() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $request_data . DIRECTORY_SEPARATOR . $request_id;
+$pathname = BASEPATH ."/uploads/$request_data/$request_id";
 
 if (!file_exists($dirname)) {
     mkdir($dirname, 0777, true);
@@ -65,7 +66,7 @@ $imagefiles_link = set_href('files', 'list', $request_id, $request_data);
     <div class="list-group">
         <?php
         foreach ($file_list as $file_name) {
-            $select_att = " onclick=\"modalSelect('$file_name')\"";
+            $select_att = " onclick=\"modalSelect('$pathname/$file_name')\"";
             $delete_att = " onclick=\"deleteFile('$file_name')\"";
             $file_ext = ext($file_name);
             $icon = isset($file_icons[$file_ext]) ? $file_icons[$file_ext] : '<i class="fa fa-file-o"></i>';
@@ -74,7 +75,7 @@ $imagefiles_link = set_href('files', 'list', $request_id, $request_data);
             echo "<a class=\"select-button\" $select_att>";
             echo "<h5>$icon $file_name</h5>";
             echo "</a>";
-            echo "<span class=\"delete-button badge badge-secondary\" data-name=\"$file_name\"><i class=\"fa fa-trash\"></i></span>";
+            echo "<span class=\"delete-button badge badge-secondary\" data-name=\"$dirname/$file_name\"><i class=\"fa fa-trash\"></i></span>";
             echo "<span class=\"badge badge-primary\">" . display_size($file_size) . "</span>";
             echo "</div>";
         }

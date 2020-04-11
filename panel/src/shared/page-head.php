@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <?=lang($request_route)?>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i><?=lang('dashboard')?></a></li>
-      <li><a href="#"><?=lang($request_route . 's')?></a></li>
+      <li><a href="<?=BASEPATH."/$request_lang"?>"><i class="fa fa-dashboard"></i><?=lang('dashboard')?></a></li>
+      <li><a href="<?=set_href($request_route)?>"><?=lang($request_route)?></a></li>
       <li class="active"><?=lang($request_func)?></li>
     </ol>
   </section>

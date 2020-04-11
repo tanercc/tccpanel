@@ -29,15 +29,14 @@ function make_main_menu($menu_id, $type_id = 1)
             }
             if ($sub_menu) {
                 $sub_menu = '<ul class="dropdown-menu">' . $sub_menu . '</ul>' . "\r\n";
-                $result .= '<li class="nav-item dropdown' . (($menu["UstAydi"]) ? ' dropdown-submenu' : '') . '"><a class="nav-link" data-toggle="dropdown" href="' . href_menu($menu) . '">' . $menu["name"] . '</a>' . $sub_menu . '</li>' . "\r\n";
-            } else $result .= '<li class="nav-item"><a class="nav-link" href="' . href_menu($menu) . '">' . $menu["dataAd"] . '</a></li>' . "\r\n";
+                $result .= '<li class="nav-item dropdown' . (($menu["upper_id"]) ? ' dropdown-submenu' : '') . '"><a class="nav-link" data-toggle="dropdown" href="' . href_menu($menu) . '">' . $menu["name"] . '</a>' . $sub_menu . '</li>' . "\r\n";
+            } else $result .= '<li class="nav-item"><a class="nav-link" href="' . href_menu($menu) . '">' . $menu["name"] . '</a></li>' . "\r\n";
         }
     }
     return $result;
 }
-$ustMenu = 0;
-$zDataMenu = make_main_menu($ustMenu);
-echo $zDataMenu;
+
+echo make_main_menu(0);
 ?>
 
 <script type="text/javascript">
