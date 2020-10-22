@@ -13,7 +13,9 @@ session_start();
 // sessions variables
 //===================================
 if (!isset($_SESSION['language'])) {
-    $_SESSION['language'] = substr(Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']),0,2);
+    $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    $acceptLang = ['tr', 'en'];
+    $_SESSION['language'] = in_array($lang, $acceptLang) ? $lang : 'tr';
 }
 if (!isset($_SESSION['is_active'])) {
     $_SESSION['is_active'] = 1;

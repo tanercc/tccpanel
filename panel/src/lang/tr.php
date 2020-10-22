@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Türkçe dil
@@ -39,7 +39,7 @@ $langs = [
     'producttagtypes' => 'Etiket Tipleri',
     'producttag' => 'Etiket',
     'producttags' => 'Etiketler',
-    
+
     'upload' => 'Yükleme',
     'uploads' => 'Yüklemeler',
 
@@ -79,14 +79,14 @@ $langs = [
     'include' => 'Dahil Et',
     'type' => 'Tip',
     'title' => 'Başlık',
-    'article' => 'Yazı',
+    'content' => 'Yazı',
     'lang' => 'Dil',
     'email' => 'Eposta',
     'password' => 'Parola',
     'upperdata' => 'Üst Veri',
 
     'yes' => 'Evet',
-    'no' => 'Hayır', 
+    'no' => 'Hayır',
     'yok' => 'Yok',
     'submit' => 'Kaydet',
     'confirmation' => 'Onay',

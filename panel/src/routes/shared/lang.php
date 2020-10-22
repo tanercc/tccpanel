@@ -71,11 +71,11 @@ if ($request_id) {
                         </div>
                     <?php endif ?>
 
-                    <?php if (in_array('article', $langfields)) : ?>
+                    <?php if (in_array('content', $langfields)) : ?>
                         <!-- textarea -->
                         <div class="form-group">
-                            <label><?= lang('article') ?></label>
-                            <textarea class="form-control summernote article" name="article"><?= $langdatas[$langtab["id"]]['article'] ?></textarea>
+                            <label><?= lang('content') ?></label>
+                            <textarea class="form-control summernote content" name="content"><?= $langdatas[$langtab["id"]]['content'] ?></textarea>
                         </div>
                     <?php endif ?>
 

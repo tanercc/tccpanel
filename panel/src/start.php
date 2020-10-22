@@ -13,7 +13,9 @@ session_start();
 // sessions variables
 //===================================
 if (!isset($_SESSION['language'])) {
-    $_SESSION['language'] = substr(Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']),0,2);
+    $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    $acceptLang = ['tr', 'en'];
+    $_SESSION['language'] = in_array($lang, $acceptLang) ? $lang : 'tr';
 }
 if (!isset($_SESSION['is_active'])) {
     $_SESSION['is_active'] = 1;
@@ -94,7 +96,6 @@ if (isset($request_params[4]) && $request_params[4] != '') {
     $request_data = $request_params[4];
 }
 
-
 //===================================
 // user session defaults
 //===================================
@@ -132,19 +133,6 @@ if (!file_exists(dirname(__FILE__) . "/routes/$request_route/$request_func.php")
     $request_route = 'error';
     $request_func = '404';
 }
-
-//===================================
-// sessions variables
-//===================================
-
-if (!isset($_SESSION['is_active'])) {
-    $_SESSION['is_active'] = 1;
-}
-if (!isset($_SESSION['deleted'])) {
-    $_SESSION['deleted'] = 0;
-}
-$global_is_active = $_SESSION['is_active'];
-$global_deleted = $_SESSION['deleted'];
 
 # db_config.php de tanımlı
 $conn = sql_connect();
