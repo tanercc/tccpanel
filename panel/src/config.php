@@ -27,7 +27,7 @@ define('WRITE_SQL_LOG', false);
 define('DBNAME', 'sablon-fs');
 define('DBHOST', 'localhost');
 define('DBUSER', 'root');
-define('DBPASS', '');
+define('DBPASS', 'toor');
 
 $server_name = $_SERVER['SERVER_NAME'];
 

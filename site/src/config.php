@@ -7,10 +7,10 @@ define('BASEPATH', '/site');
 // Genel ayarlar
 //=======================================================
 error_reporting(E_ALL);
-ini_set('display_errors','1');
+ini_set('display_errors', '1');
 mb_internal_encoding('UTF-8');
 set_time_limit(500);
-ini_set('session.gc_maxlifetime', 60*60*60);
+ini_set('session.gc_maxlifetime', 60 * 60 * 60);
 date_default_timezone_set('Europe/Istanbul');
 
 define('USER_LOGIN', false);
@@ -24,7 +24,7 @@ define('WRITE_SQL_LOG', false);
 define('DBNAME', 'sablon-fs');
 define('DBHOST', 'localhost');
 define('DBUSER', 'root');
-define('DBPASS', '');
+define('DBPASS', 'toor');
 
 $server_name = $_SERVER['SERVER_NAME'];
 
