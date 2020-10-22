@@ -63,3 +63,8 @@ Thumbs.db
 # dotenv #
 ##########
 .env
+
+# config #
+##########
+/site/src/config.php
+/panel/src/config.php
